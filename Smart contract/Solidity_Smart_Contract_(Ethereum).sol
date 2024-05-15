@@ -1,4 +1,4 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.26;
 
 contract Payroll {
     address public owner;
@@ -13,7 +13,7 @@ contract Payroll {
         _;
     }
 
-    function Payroll() public {
+    constructor() public {
         owner = msg.sender;
     }
 
