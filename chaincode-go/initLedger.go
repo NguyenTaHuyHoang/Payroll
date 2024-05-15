@@ -9,8 +9,8 @@ import (
 
 func (s *PayrollContract) InitLedger(ctx contractapi.TransactionContextInterface) error {
 	employees := []Employee{
-		{Name: "John Doe", Balance: 0},
-		{Name: "Jane Doe", Balance: 0},
+		{Address: "John Doe", Balance: 0},
+		{Address: "Jane Doe", Balance: 0},
 	}
 
 	for i, employee := range employees {
