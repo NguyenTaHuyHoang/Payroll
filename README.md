@@ -16,34 +16,9 @@ The chaincode manages:
 - Viewing the current token balance.
 
 ### Chaincode Structure
-project/
-├── chaincode-go/
-│   ├── chaincode/
-│   │   ├── mocks/
-│   │   │   ├── chaincodestub.go
-│   │   │   ├── statequeryiterator.go
-│   │   │   ├── transaction.go
-│   │   │   ├── smartcontract_test.go
-│   │   ├── main.go
-│   │   ├── employee.go
-│   │   ├── initLedger.go
-│   │   ├── paySalary.go
-│   │   ├── requestCashConversion.go
-│   │   ├── transferCash.go
-│   │   ├── viewSalary.go
-│   │   ├── payrollContract.go
-│   ├── go.mod
-│   ├── go.sum
-├── solidity/
-│   ├── contracts/
-│   │   ├── Payroll.sol
-│   ├── migrations/
-│   │   ├── 1_initial_migration.js
-│   │   ├── 2_deploy_contracts.js
-│   ├── test/
-│   │   ├── payrollTest.js
-│   ├── truffle-config.js
-├── README.md
+
+![image](https://github.com/NguyenTaHuyHoang/Payroll/assets/85854007/171a7fea-70fa-4c36-9130-4276ecc41dbf)
+
 
 - main.go: Main entry point for the chaincode.
 - payrollContract.go: defines the structure and functions of smart contracts
