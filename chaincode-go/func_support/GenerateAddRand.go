@@ -1,4 +1,4 @@
-package main
+package func_support
 
 import (
 	"crypto/rand"
