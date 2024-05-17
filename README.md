@@ -10,22 +10,9 @@ The Solidity contract includes functions for:
 
 ## Hyperledger Fabric Chaincode
 The chaincode manages:
-- Initializing the ledger with employee data.
+- Initialize the ledger with some employees
+- DepositFund adds funds to the company balance
 - Paying salaries in tokens.
 - Handling requests for cash conversion by updating employee balances.
+- TransferToken transfers tokens to a recipient
 - Viewing the current token balance.
-
-### Chaincode Structure
-
-![image](https://github.com/NguyenTaHuyHoang/Payroll/assets/85854007/171a7fea-70fa-4c36-9130-4276ecc41dbf)
-
-
-- main.go: Main entry point for the chaincode.
-- payrollContract.go: defines the structure and functions of smart contracts
-- employee.go: Employee structure definition.
-- initLedger.go: Initializes the ledger with default employees.
-- paySalary.go: Adds tokens to employee balances.
-- requestCashConversion.go: Handles token-to-cash conversion requests.
-- transferCash.go: Transfers cash to the employee upon request.
-- viewSalary.go: Retrieves the current token balance of an employee.
-
