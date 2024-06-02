@@ -57,9 +57,9 @@ async function sendEth(recipientAddress, amountInEth) {
 }
 
 // Sử dụng hàm sendEth
-sendEth('0xRecipientAddress', '0.1'); // Chuyển 0.1 ETH tới địa chỉ người nhận
+sendEth('0x3942B0Dd1B21D206512216B482697dE4915Fd72F', '0.1'); // Chuyển 0.1 ETH tới địa chỉ người nhận
 
-function sendETH(_to, _amount, callback) {
+async function sendETH(_to, _amount, callback) {
     // Lấy instance của contract
     var contractInstance = web3.eth.contract(abi).at(contractAddress);
 
@@ -74,3 +74,18 @@ function sendETH(_to, _amount, callback) {
         }
     });
 }
+// Gọi hàm transferEth của smart contract để chuyển Ether
+web3.eth.getAccounts(function(err, accounts) {
+    if (err) {
+        console.error('Error fetching accounts:', err);
+        return;
+    }
+    var owner = accounts[0]; // Địa chỉ của chủ sở hữu hợp đồng
+    contractInstance.transferEth.sendEth(toAddress, amount, { from: owner, value: amount, gas: 200000 }, function(error, transactionHash) {
+        if (!error) {
+            console.log('Transaction hash:', transactionHash);
+        } else {
+            console.error('Transaction error:', error);
+        }
+    });
+});
