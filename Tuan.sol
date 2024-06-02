@@ -8,27 +8,28 @@ contract EthTransfer {
         recipient.transfer(msg.value);
     }
 }
+
 const Web3 = require('web3');
 
 // ABI của hợp đồng EthTransfer (lấy từ Remix sau khi compile)
 const abi = [
-    {
-        "inputs": [
-            {
-                "internalType": "address payable",
-                "name": "recipient",
-                "type": "address"
-            }
-        ],
-        "name": "sendEth",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-    }
-];
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "recipient",
+				"type": "address"
+			}
+		],
+		"name": "sendEth",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]
 
 // Địa chỉ hợp đồng sau khi triển khai
-const contractAddress = '0xYourContractAddress'; // Thay bằng địa chỉ hợp đồng của bạn
+const contractAddress = '0x5aB8ea245192F5Db67F3cbDD01d64c4b4976d496'; // Thay bằng địa chỉ hợp đồng của bạn
 
 async function sendEth(recipientAddress, amountInEth) {
     if (typeof window.ethereum !== 'undefined') {
