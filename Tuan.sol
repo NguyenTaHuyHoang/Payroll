@@ -58,3 +58,19 @@ async function sendEth(recipientAddress, amountInEth) {
 
 // Sử dụng hàm sendEth
 sendEth('0xRecipientAddress', '0.1'); // Chuyển 0.1 ETH tới địa chỉ người nhận
+
+function sendETH(_to, _amount, callback) {
+    // Lấy instance của contract
+    var contractInstance = web3.eth.contract(abi).at(contractAddress);
+
+    // Gọi hàm chuyển tiền trên contract
+    contractInstance.transferEth(_to, _amount, function(error, result) {
+        if (!error) {
+            // Gọi callback nếu không có lỗi
+            callback(null, result);
+        } else {
+            // Gọi callback với lỗi nếu có lỗi xảy ra
+            callback(error, null);
+        }
+    });
+}
