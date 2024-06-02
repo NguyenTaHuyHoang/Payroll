@@ -138,7 +138,8 @@ abi = [
 const contractAddress = 'YOUR_CONTRACT_ADDRESS';0xE5749049c8f2c5f4839235DC71C2F320C856AA94
 
 // Tạo một instance của smart contract
-const contractInstance = new web3.eth.Contract(abi, contractAddress);
+// const contractInstance = new web3.eth.Contract(abi, contractAddress);
+var contractInstance = web3.eth.contract(abi).at(contractAddress);
 
 // Địa chỉ gửi Ether và địa chỉ nhận Ether
 const fromAddress = 'SENDER_ADDRESS';
@@ -146,6 +147,24 @@ const toAddress = 'RECIPIENT_ADDRESS';
 
 // Số lượng Ether cần chuyển (được tính bằng wei)
 const amount = web3.utils.toWei('1', 'ether'); // 1 Ether
+
+// Gọi hàm transferEth của smart contract để chuyển Ether
+web3.eth.getAccounts(function(err, accounts) {
+    if (err) {
+        console.error('Error fetching accounts:', err);
+        return;
+    }
+
+    var owner = accounts[0]; // Địa chỉ của chủ sở hữu hợp đồng
+
+    contractInstance.transferEth.sendTransaction(fromAddress, toAddress, amount, { from: owner, value: amount, gas: 200000 }, function(error, transactionHash) {
+        if (!error) {
+            console.log('Transaction hash:', transactionHash);
+        } else {
+            console.error('Transaction error:', error);
+        }
+    });
+});
 
 // Gọi hàm transferEth của smart contract để chuyển Ether
 contractInstance.transferEth.sendTransaction(toAddress, amount, { from: fromAddress, gas: 200000 },
