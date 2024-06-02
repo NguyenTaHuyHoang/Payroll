@@ -20,7 +20,7 @@ npm install web3@0.20.2
 node
 Web3 = require('web3')
 web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
-const abi = [
+abi = [
 	{
 		"constant": false,
 		"inputs": [
@@ -133,7 +133,6 @@ const abi = [
 		"type": "function"
 	}
 ]
-
 
 // Địa chỉ của smart contract
 const contractAddress = 'YOUR_CONTRACT_ADDRESS';0xE5749049c8f2c5f4839235DC71C2F320C856AA94
