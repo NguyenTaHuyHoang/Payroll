@@ -149,11 +149,12 @@ const toAddress = 'RECIPIENT_ADDRESS';
 const amount = web3.utils.toWei('1', 'ether'); // 1 Ether
 
 // Gọi hàm transferEth của smart contract để chuyển Ether
-contractInstance.methods.transferEth(toAddress, amount)
-    .send({ from: fromAddress, gas: 200000 })
-    .then(receipt => {
-        console.log('Transaction receipt:', receipt);
-    })
-    .catch(error => {
-        console.error('Transaction error:', error);
-    });
+contractInstance.transferEth.sendTransaction(toAddress, amount, { from: fromAddress, gas: 200000 },
+    function(error, transactionHash) {
+        if (!error) {
+            console.log('Transaction hash:', transactionHash);
+        } else {
+            console.error('Transaction error:', error);
+        }
+    }
+);
