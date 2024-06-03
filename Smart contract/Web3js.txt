@@ -1,0 +1,60 @@
+
+  export FAB3_CONFIG=/home/ubuntu/go/src/github.com/hyperledger/fabric-chaincode-evm/examples/first-network-sdk-config.yaml 
+  export FAB3_USER=User1 
+  export FAB3_ORG=OrgAccountant 
+  export FAB3_CHANNEL=staffaccountant 
+  export FAB3_CCID=evmcc 
+  export FAB3_PORT=5000 
+  
+  make fab3
+./bin/fab3
+
+Tạo terminal mới và cd vào fabric-chaincode-evm
+
+
+npm install web3@0.20.2
+node
+Web3 = require('web3')
+web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'))
+
+// ABI của smart contract
+var contractABI = [
+	{
+		"inputs": [
+			{
+				"internalType": "address payable",
+				"name": "recipient",
+				"type": "address"
+			}
+		],
+		"name": "sendEth",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	}
+]; 
+var contractAddress = '0x9A79644973Da3c48e45C2c9A7879b9bE10c1803E'; // Địa chỉ của smart contract
+var contractInstance = web3.eth.contract(contractABI).at(contractAddress);
+
+// Gọi hàm trong smart contract
+web3.eth.getAccounts(function(err, accounts) {
+    if (err) {
+        console.error('Error fetching accounts:', err);
+        return;
+    }
+    // Địa chỉ nhận Ether
+        var recipientAddress = '0x3942B0Dd1B21D206512216B482697dE4915Fd72F';
+        var AccountAddress = accounts[0]; // Địa chỉ của chủ sở hữu hợp đồng
+        console.log('AccoundAddress', AccountAddress)
+	contractInstance.sendEth.sendTransaction(recipientAddress, {
+	    from: AccountAddress,
+	    value: web3.toWei(1, 'ether'), // amount là số lượng ether bạn muốn gửi
+	    gas: 300000 // Số gas tối đa bạn muốn sử dụng cho giao dịch
+	}, function(error, result) {
+	    if (!error) {
+		console.log(result); // Log transaction hash nếu thành công
+	    } else {
+		console.error(error); // Log lỗi nếu có
+	    }
+	});
+});
