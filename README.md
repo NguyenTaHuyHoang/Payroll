@@ -1,4 +1,4 @@
-# Payroll Smart Contract and Hyperledger Fabric Chaincode
+# Payroll Smart Contract and Hyperledger Fabric Chaincode 
 ## Introduction
 This project includes a Solidity smart contract and Hyperledger Fabric chaincode for managing a company's payroll system using internal tokens. Employees can receive their salaries in tokens and request to convert these tokens into cash.
 
